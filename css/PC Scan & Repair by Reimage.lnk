@@ -1,0 +1,25 @@
+package tests;
+
+import model.PizzaConfig;
+
+public class PizzaTest2 implements PizzaTest {
+
+	@Override
+	public PizzaConfig executeTest(PizzaTest test) {
+		
+		//test for missing option set name
+		System.out.println("creating and adding an option set\n");
+		PizzaConfig configurations = new PizzaConfig();
+		configurations.setName(null);
+		configurations.setBasePrice(500.0);
+		configurations.setSize("SMALL");
+		configurations.setDeliveryMode("TAKE AWAY");
+		configurations.addOptionSet(configurations.createOptionSet("meat",
+				new String[] { "beef", "cheeken", "fish" }, new Double[] { 2000.0, 3000.0, 4000.0 }));
+		configurations.addOptionSet(configurations.createOptionSet("vegetables",
+		new String[] { "tomatoes", "onions", "mushroom" }, new Double[] { 200.0, 300.0, 400.0 }));
+		System.out.println(configurations.toString());
+		return configurations    ;
+	}
+
+}
